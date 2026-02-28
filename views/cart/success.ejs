@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Success</title>
+</head>
+<body>
+<%- include("../partials/header.ejs") %>
+
+<h1> Order placed successfully☺!</h1>
+<% if (isFirstOrder) { %>
+  <p>🎉 First order discount applied: 10%</p>
+  <p>Discount: BHD <%= discountAmount.toFixed(2) %></p>
+<% } %>
+<p>Subtotal: BHD <%= subtotal.toFixed(2) %></p>
+<p>Delivery: BHD <%= delivery.toFixed(2) %></p>
+<h2>Total: BHD <%= total.toFixed(2) %></h2>
+
+</body>
+</html>

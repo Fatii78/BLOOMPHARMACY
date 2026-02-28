@@ -15,7 +15,6 @@ app.use(express.json())
 app.use(morgan("dev"))
 app.use(methodOverride("_method"))
 app.use(express.static(path.join(__dirname, "public")))
-
 // Session
 app.use(
   session({
@@ -23,8 +22,8 @@ app.use(
     resave: false,
     saveUninitialized: false,
     store: MongoStore.create({
-      mongoUrl: process.env.MONGODB_URI
-    })
+      mongoUrl: process.env.MONGODB_URI,
+    }),
   })
 )
 
@@ -33,7 +32,18 @@ app.use((req, res, next) => {
   next()
 })
 
+// cartCount
+app.use((req, res, next) => {
+  const cart = req.session.cart || {}
+  const items = Array.isArray(cart.items) ? cart.items : []
+  const count = items.reduce((sum, item) => sum + (Number(item.qty) || 0), 0)
+  res.locals.cartCount = count
+  next()
+})
+
+
 app.set("view engine", "ejs")
+app.set("views", path.join(__dirname, "views"))
 
 // DB
 mongoose.connect(process.env.MONGODB_URI)

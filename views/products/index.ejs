@@ -3,25 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Products</title>
 </head>
 <body>
-
-<a href="/">Home</a>
-
-<hr>
-
+<%- include("../partials/header") %>
 <% if (products.length === 0) { %>
   <p>No products found.</p>
 <% } %>
 
 <% products.forEach(product => { %>
-  <div style="border:1px solid #ccc; padding:10px; margin:10px;">
+  <div>
 <img  src="<%= product.imageUrl %>"/>
-
     <h3><%= product.name %></h3>
     <p><%= product.price %> BHD</p>
-    <a href="/products/<%= product._id %>">View Details</a>
+    <a href="/products/<%= product._id %>">Details</a>
   </div>
 <% }) %>
 </body>
