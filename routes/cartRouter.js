@@ -5,8 +5,8 @@ const cartController = require("../controllers/cartController")
 
 router.get("/", cartController.showCart)
 router.post("/add", cartController.addToCart)
-router.post("/update", cartController.updateQty)
-router.post("/delete", cartController.deleteItem)
+router.put("/:productId", cartController.updateQty)
+router.delete("/:productId", cartController.deleteItem)
 router.post("/checkout", cartController.requireAuth, cartController.checkout)
 
 

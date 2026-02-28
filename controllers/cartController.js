@@ -48,7 +48,8 @@ const updateQty = (req, res) => {
   try {
     ensureCart(req)
     console.log("UPDATE QTY BODY:", req.body)
-    const { productId, action } = req.body
+    const { productId } = req.params
+const { action } = req.body
     const item = req.session.cart.items.find((i) => i.productId === productId)
     if (!item) {
       return res.redirect("/cart")
@@ -72,7 +73,7 @@ const updateQty = (req, res) => {
 const deleteItem = (req, res) => {
   try {
     ensureCart(req)
-    const { productId } = req.body
+    const { productId } = req.params
     req.session.cart.items = req.session.cart.items.filter(
       (i) => i.productId !== productId
     )
@@ -81,6 +82,7 @@ const deleteItem = (req, res) => {
     return res.status(500).json({ message: "Error deleting item", error: error.message })
   }
 }
+
 const requireAuth = (req, res, next) => {
   if (!req.session.user) return res.redirect("/auth/sign-in")
   next()

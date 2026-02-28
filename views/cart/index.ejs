@@ -48,7 +48,9 @@
   <%- include("../partials/header.ejs") %>
 
   <div class="wrap">
+
     <% const items = cart.items || []; %>
+
     <% if (items.length === 0) { %>
       <p>Your cart is empty.</p>
     <% } else { %>
@@ -75,28 +77,30 @@
                 <p class="name"><%= item.name %></p>
                 <p class="price">BHD <%= item.price %></p>
                 <div class="controls">
-                  <form action="/cart/update" method="POST">
-                    <input type="hidden" name="productId" value="<%= item.productId %>">
+                  <form action="/cart/<%= item.productId %>?_method=PUT" method="POST">
                     <input type="hidden" name="action" value="dec">
                     <button class="btn" type="submit">-</button>
                   </form>
                   <span class="qty"><%= item.qty %></span>
-
-                  <form action="/cart/update" method="POST">
-                    <input type="hidden" name="productId" value="<%= item.productId %>">
-                    <input type="hidden" name="action" value="inc">
-                    <button class="btn" type="submit">+</button>
-                  </form>
+<form action="/cart/<%= item.productId %>?_method=PUT" method="POST">
+  <input type="hidden" name="action" value="inc">
+  <button type="submit">+</button>
+</form>
                 </div>
               </div>
 
-              <form action="/cart/delete" method="POST">
-                <input type="hidden" name="productId" value="<%= item.productId %>">
-                <button class="deleteBtn" type="submit" title="Remove">✕</button>
-              </form>
+        <% items.forEach(item => { %>
+  <div class="item">
+    <form action="/cart/<%= item.productId %>?_method=DELETE" method="POST">
+      <button type="submit">✕</button>
+    </form>
+
+  </div>
+<% }) %>
 
             </div>
           <% }) %>
+
         </div>
 
         <div class="summary">
