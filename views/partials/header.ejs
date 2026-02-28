@@ -3,59 +3,63 @@
     max-width: 980px;
     margin: 18px auto 0;
     padding: 0 16px;
+    font-family: "Patrick Hand", cursive;
   }
 
   .topbar{
-    border:1px solid #e5e7eb;
-    border-radius:14px;
-    padding:14px 16px;
+    padding:16px 20px;
     display:flex;
     align-items:center;
     justify-content:space-between;
-    background:#fff;
+    background:#ffffff;
   }
 
   .left, .right{
     display:flex;
     align-items:center;
-    gap:12px;
+    gap:18px;
   }
 
-  .brand{
-    font-weight:800;
-    letter-spacing:.4px;
+  /* 🟣 العنوان */
+  .brand a{
+    font-weight:900;
+    letter-spacing:1px;
+    font-size:22px;
+    text-decoration:none;
+     color:#0e2962;
   }
 
+  /* 🟣 الأيقونات بدون إطار */
   .icon-btn{
-    width:40px;
-    height:40px;
-    border:1px solid #e5e7eb;
-    border-radius:12px;
-    background:#fff;
+    background:transparent;
+    border:none;
     cursor:pointer;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:18px;
+    font-size:22px;
     position:relative;
+    color:#000;
+    transition: all .2s ease;
   }
 
+  .icon-btn:hover{
+    transform: scale(1.1);
+  }
+
+  /* 🟣 badge */
   .badge{
     position:absolute;
-    top:-6px;
-    right:-6px;
+    top:-8px;
+    right:-10px;
     min-width:20px;
     height:20px;
     padding:0 6px;
     border-radius:999px;
-    background:#0f1b3b;
+     background:#0e2962;
     color:#fff;
     font-size:12px;
     font-weight:800;
     display:flex;
     align-items:center;
     justify-content:center;
-    border:2px solid #fff;
   }
 
   .dropdown{
@@ -64,65 +68,81 @@
 
   .menu{
     position:absolute;
-    top:46px;
+    top:40px;
     left:0;
     width:190px;
     background:#fff;
-    border:1px solid #e5e7eb;
     border-radius:12px;
     padding:8px;
     box-shadow: 0 10px 30px rgba(0,0,0,.08);
     display:none;
     z-index:50;
   }
+
   .menu.show{ display:block; }
 
   .menu a{
     display:block;
-    padding:10px 10px;
+    padding:10px;
     border-radius:10px;
     text-decoration:none;
-    color:#111827;
+     color:#0e2962;
     font-weight:600;
   }
-  .menu a:hover{ background:#f3f4f6; }
+
+  .menu a:hover{
+    background:#f3f4f6;
+  }
 
   .menu form{ margin:0; }
+
   .menu button{
     width:100%;
     text-align:left;
-    padding:10px 10px;
+    padding:10px;
     border-radius:10px;
     border:none;
     background:transparent;
     cursor:pointer;
     font-weight:700;
   }
-  .menu button:hover{ background:#f3f4f6; }
+
+  .menu button:hover{
+    background:#f3f4f6;
+  }
+
 
   .searchbar{
-    margin-top:12px;
-    border:1px solid #e5e7eb;
-    border-radius:14px;
-    padding:10px 12px;
+    margin-top:14px;
+    border-radius:20px;
+    padding:12px 16px;
     display:flex;
     align-items:center;
     gap:10px;
     background:#f3f4f6;
   }
+
   .searchbar input{
     width:100%;
     border:none;
     outline:none;
     background:transparent;
-    font-size:14px;
+    font-size:15px;
+    font-family: "Patrick Hand", cursive;
   }
+
   .searchbar button{
     border:none;
     background:transparent;
     cursor:pointer;
-    font-size:16px;
+    font-size:18px;
+    color:#000;
   }
+  .icon-btn img{
+  width:22px;
+  height:22px;
+  object-fit:contain;
+}
 </style>
 
 <div class="header-wrap">
@@ -133,7 +153,6 @@
       <div class="dropdown">
         <button class="icon-btn" type="button" onclick="toggleMenu('catMenu')">☰</button>
 
-
         <div id="catMenu" class="menu">
           <a href="/products?category=Skincare">Skin Care</a>
           <a href="/products?category=Haircare">Hair care</a>
@@ -143,9 +162,9 @@
       </div>
     </div>
 
-
-    <div class="brand"><a href="/">BLOOM Pharmacy</a></div>
-
+    <div class="brand">
+      <a href="/">BLOOM PHARMACY</a>
+    </div>
 
     <div class="right">
 
@@ -157,7 +176,7 @@
       </a>
 
       <div class="dropdown">
-        <button class="icon-btn" type="button" onclick="toggleMenu('profileMenu')" aria-label="Profile">👤</button>
+        <button class="icon-btn" type="button" onclick="toggleMenu('profileMenu')" aria-label="Profile"><img src="/images/user.png" alt=""></button>
 
         <div id="profileMenu" class="menu" style="left:auto; right:0;">
           <% if (!user) { %>
@@ -173,10 +192,9 @@
     </div>
   </div>
 
-
   <form class="searchbar" action="/products" method="GET">
     <input type="text" name="q" placeholder="Search products..." />
-    <button type="submit">🔍</button>
+    <button type="submit">🔍︎</button>
   </form>
 
 </div>
@@ -187,7 +205,6 @@
     if(!el) return
     el.classList.toggle("show")
   }
-
 
   document.addEventListener("click", (e) => {
     const catMenu = document.getElementById("catMenu")

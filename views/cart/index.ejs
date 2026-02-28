@@ -48,13 +48,10 @@
   <%- include("../partials/header.ejs") %>
 
   <div class="wrap">
-
     <% const items = cart.items || []; %>
-
     <% if (items.length === 0) { %>
       <p>Your cart is empty.</p>
     <% } else { %>
-
       <% let subtotal = 0; %>
       <% items.forEach(i => subtotal += (i.price * i.qty)); %>
       <% const delivery = 2; %>
@@ -64,7 +61,6 @@
         <div>
           <% items.forEach(item => { %>
             <div class="item" style="margin-bottom:12px;">
-
               <div class="img">
                 <% if (item.imageUrl) { %>
                   <img src="<%= item.imageUrl %>" alt="">
@@ -88,29 +84,23 @@
 </form>
                 </div>
               </div>
-
         <% items.forEach(item => { %>
   <div class="item">
     <form action="/cart/<%= item.productId %>?_method=DELETE" method="POST">
       <button type="submit">✕</button>
     </form>
-
   </div>
 <% }) %>
-
             </div>
           <% }) %>
-
         </div>
 
         <div class="summary">
           <h3>Order summary</h3>
-
           <div class="row">
             <span>Subtotal</span>
             <span>BHD <%= subtotal.toFixed(2) %></span>
           </div>
-
           <div class="row">
             <span>Delivery costs</span>
             <span>BHD <%= delivery.toFixed(2) %></span>
