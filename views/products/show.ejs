@@ -9,13 +9,34 @@
 
 <h1><%= product.name %></h1>
 
-<img src="<%= product.imageUrl %>" width="300" />
-
-<p><strong>Price:</strong> <%= product.price %> BHD</p>
+<img src="<%= product.imageUrl %>" width="250" />
 
 <p><%= product.description %></p>
+<p><strong>BHD <%= product.price %></strong></p>
 
-<button>Add to Cart</button>
+<form action="/cart/add" method="POST" style="display:flex; gap:10px; align-items:center;">
+  <input type="hidden" name="productId" value="<%= product._id %>" />
+
+  <button type="button" onclick="decQty()">-</button>
+
+  <input id="qty" type="text" name="qty" value="1" min="1" style="width:60px; text-align:center;" />
+
+  <button type="button" onclick="incQty()">+</button>
+
+  <button type="submit">Add Cart</button>
+</form>
+
+<script>
+  function incQty() {
+    const el = document.getElementById("qty")
+    el.value = Number(el.value) + 1
+  }
+  function decQty() {
+    const el = document.getElementById("qty")
+    const v = Number(el.value)
+    if (v > 1) el.value = v - 1
+  }
+</script>
 
 </body>
 </html>
