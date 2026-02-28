@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart</title>
+
+  <style>
+    .wrap{ max-width:980px; margin:20px auto; padding:0 16px; }
+    .grid{ display:grid; grid-template-columns: 1fr 320px; gap:18px; align-items:start; }
+    .item{
+      border:1px solid #ddd; border-radius:12px; padding:14px;
+      display:flex; gap:14px; align-items:center;
+      background:#fff;
+    }
+    .img{ width:90px; height:90px; border:1px solid #ddd; border-radius:10px;
+      display:flex; align-items:center; justify-content:center; overflow:hidden; background:#fff;
+    }
+    .img img{ width:100%; height:100%; object-fit:cover; }
+    .info{ flex:1; }
+    .name{ font-weight:800; margin:0 0 6px; }
+    .price{ margin:0 0 8px; }
+    .controls{ display:flex; gap:10px; align-items:center; }
+    .btn{ border:1px solid #ccc; background:#f6f6f6; border-radius:8px; width:34px; height:34px; cursor:pointer; }
+    .qty{ font-weight:800; }
+    .deleteBtn{
+      border:none; background:transparent; cursor:pointer; font-size:18px; color:#111;
+    }
+
+    .summary{
+      border:1px solid #ddd; border-radius:12px; padding:16px; background:#fff;
+    }
+    .summary h3{ margin:0 0 14px; text-align:center; }
+    .row{ display:flex; justify-content:space-between; margin:10px 0; }
+    .total{ font-weight:900; margin-top:10px; }
+    .checkout{
+      width:100%; border:none; padding:12px 14px; border-radius:10px;
+      background:#0f1b3b; color:#fff; font-weight:800; cursor:pointer; margin-top:14px;
+    }
+
+    @media (max-width: 850px){
+      .grid{ grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <%- include("../partials/header.ejs") %>
+
+  <div class="wrap">
+    <% const items = cart.items || []; %>
+    <% if (items.length === 0) { %>
+      <p>Your cart is empty.</p>
+    <% } else { %>
+      <% let subtotal = 0; %>
+      <% items.forEach(i => subtotal += (i.price * i.qty)); %>
+      <% const delivery = 2; %>
+      <% const total = subtotal + delivery; %>
+
+      <div class="grid">
+        <div>
+          <% items.forEach(item => { %>
+            <div class="item" style="margin-bottom:12px;">
+              <div class="img">
+                <% if (item.imageUrl) { %>
+                  <img src="<%= item.imageUrl %>" alt="">
+                <% } else { %>
+                  <span>IMG</span>
+                <% } %>
+              </div>
+
+              <div class="info">
+                <p class="name"><%= item.name %></p>
+                <p class="price">BHD <%= item.price %></p>
+                <div class="controls">
+                  <form action="/cart/<%= item.productId %>?_method=PUT" method="POST">
+                    <input type="hidden" name="action" value="dec">
+                    <button class="btn" type="submit">-</button>
+                  </form>
+                  <span class="qty"><%= item.qty %></span>
+<form action="/cart/<%= item.productId %>?_method=PUT" method="POST">
+  <input type="hidden" name="action" value="inc">
+  <button type="submit">+</button>
+</form>
+                </div>
+              </div>
+        <% items.forEach(item => { %>
+  <div class="item">
+    <form action="/cart/<%= item.productId %>?_method=DELETE" method="POST">
+      <button type="submit">✕</button>
+    </form>
+  </div>
+<% }) %>
+            </div>
+          <% }) %>
+        </div>
+
+        <div class="summary">
+          <h3>Order summary</h3>
+          <div class="row">
+            <span>Subtotal</span>
+            <span>BHD <%= subtotal.toFixed(2) %></span>
+          </div>
+          <div class="row">
+            <span>Delivery costs</span>
+            <span>BHD <%= delivery.toFixed(2) %></span>
+          </div>
+
+          <div class="row total">
+            <span>Total</span>
+            <span>BHD <%= total.toFixed(2) %></span>
+          </div>
+
+          <form action="/cart/checkout" method="POST">
+            <button class="checkout" type="submit">checkout</button>
+          </form>
+
+          <% if (!user) { %>
+            <p style="margin-top:10px; font-size:13px; color:#555;">
+              * You must sign in to checkout.
+            </p>
+          <% } %>
+        </div>
+
+      </div>
+    <% } %>
+
+  </div>
+</body>
+</html>

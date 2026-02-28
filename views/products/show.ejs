@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css">
+  <title><%= product.name %></title>
+</head>
+<body>
+<%- include("../partials/header") %>
+<h1><%= product.name %></h1>
+<img src="<%= product.imageUrl %>" width="250" />
+<p><%= product.description %></p>
+<p><strong>BHD <%= product.price %></strong></p>
+
+<form action="/cart/add" method="POST" >
+  <input type="hidden" name="productId" value="<%= product._id %>" />
+  <button type="button" onclick="decQty()">-</button>
+  <input id="qty" type="text" name="qty" value="1" readonly  />
+  <button type="button" onclick="incQty()">+</button>
+  <button type="submit">Add Cart</button>
+</form>
+
+<script>
+  function incQty() {
+  const qtyInput = document.getElementById("qty")
+  qtyInput.value = Number(qtyInput.value) + 1
+}
+function decQty() {
+  const qtyInput = document.getElementById("qty")
+  const currentValue = Number(qtyInput.value)
+  if (currentValue > 1) {
+    qtyInput.value = currentValue - 1
+  }
+}
+</script>
+
+</body>
+</html>
