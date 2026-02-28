@@ -1,0 +1,32 @@
+{
+  "name": "bloompharmacy",
+  "version": "1.0.0",
+  "description": "[GitHub - Fatema](https://github.com/Fatii78) | [LinkedIn - Fatema](https://www.linkedin.com/in/fatema-alnajjas-a57198228)\r [GitHub - YASMIN](PUT_TEAMMATE_GITHUB_LINK_HERE) | [LinkedIn - YASMIN] ()\r ***",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node --watch server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fatii78/BLOOMPHARMACY.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Fatii78/BLOOMPHARMACY/issues"
+  },
+  "homepage": "https://github.com/Fatii78/BLOOMPHARMACY#readme",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "connect-mongo": "^6.0.0",
+    "dotenv": "^17.3.1",
+    "ejs": "^4.0.1",
+    "express": "^5.2.1",
+    "express-session": "^1.19.0",
+    "method-override": "^3.0.0",
+    "mongoose": "^9.2.3",
+    "morgan": "^1.10.1"
+  }
+}
