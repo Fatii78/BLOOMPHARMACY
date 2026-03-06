@@ -9,6 +9,9 @@ const path = require("path")
 
 const app = express()
 
+const dns = require("dns")
+dns.setServers(["8.8.8.8", "1.1.1.1"])
+
 // Middleware
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
@@ -41,9 +44,9 @@ app.use((req, res, next) => {
   next()
 })
 
-
 app.set("view engine", "ejs")
 app.set("views", path.join(__dirname, "views"))
+app.use(express.static("public"))
 
 // DB
 mongoose.connect(process.env.MONGODB_URI)
@@ -57,12 +60,12 @@ app.get("/", (req, res) => {
 })
 
 const indexRouter = require("./routes/indexRouter")
-//const authRouter = require("./routes/authRouter")
+const authRouter = require("./routes/authRouter")
 const productRouter = require("./routes/productRouter")
 const cartRouter = require("./routes/cartRouter")
 
 app.use("/", indexRouter)
-//app.use("/auth", authRouter)
+app.use("/auth", authRouter)
 app.use("/products", productRouter)
 app.use("/cart", cartRouter)
 
