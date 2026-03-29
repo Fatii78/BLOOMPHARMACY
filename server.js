@@ -58,6 +58,8 @@ mongoose.connection.on("connected", () => {
 app.get("/", (req, res) => {
   res.render("index")
 })
+// confirm public
+app.use(express.static("public"))
 
 const indexRouter = require("./routes/indexRouter")
 const authRouter = require("./routes/authRouter")
