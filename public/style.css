@@ -1,6 +1,114 @@
-.category{
- display:inline-block;
-  padding:20px 30px;
-   border:1px solid #ccc;
-    text-decoration:none;
+body {
+  color: #0e2962;
+   font-family: "Patrick Hand", cursive;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.header-content img {
+  max-width: 25px;
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.header-content img:hover {
+  transform: translateY(-3px);
+}
+
+.banner-container {
+  padding: 40px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.offer-banner {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 900px;
+  border: 1px solid #eaeaea;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  padding: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.offer-banner:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+.banner-image-wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+}
+
+.banner-text-wrapper {
+  flex: 1.5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 25px;
+  border-left: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.banner-image {
+  max-width: 100%;
+  height: auto;
+  width: 280px;
+  object-fit: contain;
+}
+
+.banner-text {
+  font-size: 28px;
+  margin: 0;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.category-section {
+  padding: 0 20px 60px;
+}
+
+.category-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 10px 20px;
+  flex-wrap: wrap;
+}
+
+.category-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 170px;
+  height: 170px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  text-align: center;
+  padding: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #0e2962;
+}
+
+.category-card:hover {
+transform: translateY(-8px) scale(1.05);
+background-color: #0e2962;
+color: white;
 }
