@@ -47,7 +47,6 @@
 ## ***Screenshots***
 ![ERD](./ER.jpeg)
 ![HOME](./screenshots/home.png)
-![CATEGORIES](./screenshots/categories.png)
 ![PRODUCTS](./screenshots/products.png)
 ![PRODUCT DETAILS](./screenshots/product-details.png)
 ![CART](./screenshots/cart.png)

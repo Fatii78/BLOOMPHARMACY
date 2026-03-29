@@ -3,25 +3,31 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
     <title>Bloom Pharmacy | Home</title>
   </head>
 
   <body>
-    <%- include("partials/header") %>
-    <section>
-      <div>
-        <img src="/images/produts.webp" alt="Offer" width="445" />
-        <h2>10% off from your first order</h2>
+        <%- include("partials/header") %> </div>
+
+    <section class="banner-container">
+      <div class="offer-banner">
+        <div class="banner-image-wrapper">
+          <img src="/images/produts.webp" alt="Skin Care Products Group" class="banner-image" />
+        </div>
+        <div class="banner-text-wrapper">
+          <h2 class="banner-text">10% off from your first order</h2>
+        </div>
       </div>
     </section>
 
-    <section>
-      <div id="category">
-        <a href="/products?category=Skincare"> Skin Care </a>
-        <a href="/products?category=Haircare"> Hair care</a>
-        <a href="/products?category=Nails"> Nails</a>
-        <a href="/products?category=Vitamins">Vitamins </a>
+    <section class="category-section">
+      <div class="category-container">
+        <a href="/products?category=Skincare" class="category-card">Skin Care</a>
+        <a href="/products?category=Haircare" class="category-card">Hair Care</a>
+        <a href="/products?category=Nails" class="category-card">Nails</a>
+        <a href="/products?category=Vitamins" class="category-card">Vitamins</a>
       </div>
     </section>
   </body>
