@@ -6,7 +6,6 @@ const methodOverride = require("method-override")
 const session = require("express-session")
 const MongoStore = require("connect-mongo").default
 const path = require("path")
-
 const app = express()
 
 const dns = require("dns")
@@ -66,11 +65,13 @@ const indexRouter = require("./routes/indexRouter")
 const authRouter = require("./routes/authRouter")
 const productRouter = require("./routes/productRouter")
 const cartRouter = require("./routes/cartRouter")
+const reviewRouter = require("./routes/reviewRouter")
 
 app.use("/", indexRouter)
 app.use("/auth", authRouter)
 app.use("/products", productRouter)
 app.use("/cart", cartRouter)
+app.use("/", reviewRouter)
 
 const PORT = 3000
 app.listen(PORT, () => {
