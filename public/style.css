@@ -210,8 +210,8 @@ margin-top:-10px;
 opacity:0.9;
 }
 
-/*details*/
 
+/*details*/
 .product-details-container{
 display:flex;
 justify-content:center;
@@ -308,3 +308,4 @@ opacity:0.9;}
   border: 1px solid white;
   text-decoration: none;
 }
+

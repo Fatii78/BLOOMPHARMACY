@@ -4,18 +4,78 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Order Success</title>
+  <style>
+   body { font-family: "Patrick Hand", cursive; background-color: #f9f9f9; margin: 0; }
+    .order-success-card {
+        max-width: 500px;
+        margin: 50px auto;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        text-align: center;
+    }
+    .order-success__title {
+        color: #000000;
+        font-size: 1.8rem;
+        margin-bottom: 25px;
+    }
+    .order-success__discount-box {
+        border: 1px dashed #000000;
+        border-radius: 10px;
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+    .order-success__row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 12px;
+        color: #555;
+    }
+    .order-success__total {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+        padding-top: 15px;
+        border-top: 2px solid #eee;
+        font-weight: bold;
+        color: #1a1a1a;
+        font-size: 1.2rem;
+    }
+    .order-success__currency {
+        font-size: 0.9rem;
+        color: #888;
+        margin-inline-end: 4px;
+    }
+</style>
 </head>
+
 <body>
-  <%- include("../partials/header.ejs") %>
+<%- include("../partials/header.ejs") %>
 
-<h1> Order placed successfully☺!</h1>
-<% if (isFirstOrder) { %>
-  <p>🎉 First order discount applied: 10%</p>
-  <p>Discount: BHD <%= discountAmount.toFixed(2) %></p>
-<% } %>
-<p>Subtotal: BHD <%= subtotal.toFixed(2) %></p>
-<p>Delivery: BHD <%= delivery.toFixed(2) %></p>
-<h2>Total: BHD <%= total.toFixed(2) %></h2>
-
+<main class="order-success-card">
+    <h1 class="order-success__title">Order placed successfully ☺!</h1>
+    <% if (isFirstOrder) { %>
+        <div class="order-success__discount-box">
+            <p class="order-success__discount-text">🎉 First order discount applied: 10%</p>
+            <p class="order-success__discount-text">
+                Discount: <span class="order-success__currency">BHD</span> <%= discountAmount.toFixed(2) %>
+            </p>
+        </div>
+    <% } %>
+    <div class="order-success__details">
+        <div class="order-success__row">
+            <span>Subtotal:</span>
+            <span><span class="order-success__currency">BHD</span> <%= subtotal.toFixed(2) %></span>
+        </div>
+        <div class="order-success__row">
+            <span>Delivery:</span>
+            <span><span class="order-success__currency">BHD</span> <%= delivery.toFixed(2) %></span>
+        </div>
+        <div class="order-success__total">
+            <span>Total:</span>
+            <span><span class="order-success__currency">BHD</span> <%= total.toFixed(2) %></span>
+        </div>
+    </div>
+</main>
 </body>
 </html>

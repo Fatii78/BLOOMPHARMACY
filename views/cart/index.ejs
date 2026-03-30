@@ -6,91 +6,136 @@
   <title>Cart</title>
 
   <style>
-    .wrap{ max-width:980px; margin:20px auto; padding:0 16px; }
-    .grid{ display:grid; grid-template-columns: 1fr 320px; gap:18px; align-items:start; }
-    .item{
-      border:1px solid #ddd; border-radius:12px; padding:14px;
-      display:flex; gap:14px; align-items:center;
-      background:#fff;
+    body { font-family: "Patrick Hand", cursive; background-color: #f9f9f9; margin: 0; }
+    .wrap { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
+    .grid { display: grid; grid-template-columns: 1fr 350px; gap: 30px; align-items: start; }
+    .item {
+      border: 1px solid #eee; border-radius: 15px; padding: 20px;
+      display: flex; gap: 20px; align-items: center;
+      background: #fff; margin-bottom: 15px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.02);
     }
-    .img{ width:90px; height:90px; border:1px solid #ddd; border-radius:10px;
-      display:flex; align-items:center; justify-content:center; overflow:hidden; background:#fff;
+    .img {
+      width: 100px; height: 100px; border: 1px solid #f0f0f0; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center; overflow: hidden;
     }
-    .img img{ width:100%; height:100%; object-fit:cover; }
-    .info{ flex:1; }
-    .name{ font-weight:800; margin:0 0 6px; }
-    .price{ margin:0 0 8px; }
-    .controls{ display:flex; gap:10px; align-items:center; }
-    .btn{ border:1px solid #ccc; background:#f6f6f6; border-radius:8px; width:34px; height:34px; cursor:pointer; }
-    .qty{ font-weight:800; }
-    .deleteBtn{
-      border:none; background:transparent; cursor:pointer; font-size:18px; color:#111;
+    .img img { width: 100%; height: 100%; object-fit: contain; }
+    .info { flex: 1; }
+    .name { font-weight: 700; font-size: 1.1rem; margin: 0 0 5px; color: #333; }
+    .price { font-weight: 600; color: #666; margin-bottom: 15px; }
+    .controls {
+      display: flex;
+      align-items: center;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      width: fit-content;
+      overflow: hidden;
+      background: #f8f9fa;
     }
-
-    .summary{
-      border:1px solid #ddd; border-radius:12px; padding:16px; background:#fff;
+    .btn-qty {
+      border: none;
+      background: transparent;
+      width: 35px;
+      height: 35px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .summary h3{ margin:0 0 14px; text-align:center; }
-    .row{ display:flex; justify-content:space-between; margin:10px 0; }
-    .total{ font-weight:900; margin-top:10px; }
-    .checkout{
-      width:100%; border:none; padding:12px 14px; border-radius:10px;
-      background:#0f1b3b; color:#fff; font-weight:800; cursor:pointer; margin-top:14px;
+    .btn-qty:hover { background: #eee; }
+    .qty {
+      padding: 0 15px;
+      font-weight: 700;
+      font-size: 1rem;
+      background: #fff;
+      height: 35px;
+      display: flex;
+      align-items: center;
+      border-left: 1px solid #ddd;
+      border-right: 1px solid #ddd;
     }
-
-    @media (max-width: 850px){
-      .grid{ grid-template-columns:1fr; }
+    .delete-btn {
+      border: 1px solid #ddd; background: #fff; border-radius: 8px;
+      width: 40px; height: 40px; cursor: pointer; color: #888;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.2s;
+    }
+    .delete-btn:hover { background: #fee; color: #e74c3c; border-color: #fab1a0; }
+    .summary {
+      border: 1px solid #eee; border-radius: 15px; padding: 25px; background: #fff;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+    }
+    .summary h3 { margin-top: 0; text-align: center; font-size: 1.3rem; margin-bottom: 20px; }
+    .row { display: flex; justify-content: space-between; margin: 12px 0; color: #444; }
+    .total { font-weight: 800; font-size: 1.2rem; border-top: 1px solid #eee; padding-top: 15px; margin-top: 15px; color: #000; }
+    .checkout-btn {
+      width: 100%; border: none; padding: 15px; border-radius: 10px;
+      background: #0f1b3b; color: #fff; font-weight: 800; font-size: 1rem;
+      cursor: pointer; margin-top: 20px; text-transform: lowercase;
+    }
+    .checkout-btn:hover { background: #1a2a5a; }
+    .empty-msg {
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: #555;
+      margin-top: 60px;
+    }
+    @media (max-width: 850px) {
+      .grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
-<body>
 
+<body>
   <%- include("../partials/header.ejs") %>
 
   <div class="wrap">
     <% const items = cart.items || []; %>
     <% if (items.length === 0) { %>
-      <p>Your cart is empty.</p>
+      <div style="text-align: center">
+        <p class="empty-msg">Your cart is empty</p>
+      </div>
     <% } else { %>
-      <% let subtotal = 0; %>
-      <% items.forEach(i => subtotal += (i.price * i.qty)); %>
-      <% const delivery = 2; %>
-      <% const total = subtotal + delivery; %>
+      <%
+        let subtotal = 0;
+        items.forEach(i => subtotal += (i.price * i.qty));
+        const delivery = 2.00;
+        const total = subtotal + delivery;
+      %>
 
       <div class="grid">
-        <div>
+        <div class="items-list">
           <% items.forEach(item => { %>
-            <div class="item" style="margin-bottom:12px;">
+            <div class="item">
               <div class="img">
                 <% if (item.imageUrl) { %>
-                  <img src="<%= item.imageUrl %>" alt="">
+                  <img src="<%= item.imageUrl %>" alt="<%= item.name %>">
                 <% } else { %>
-                  <span>IMG</span>
+                  <span style="font-size: 12px; color: #ccc;">No Image</span>
                 <% } %>
               </div>
 
               <div class="info">
                 <p class="name"><%= item.name %></p>
-                <p class="price">BHD <%= item.price %></p>
+                <p class="price">BHD <%= item.price.toFixed(2) %></p>
                 <div class="controls">
-                  <form action="/cart/<%= item.productId %>?_method=PUT" method="POST">
+                  <form action="/cart/<%= item.productId %>?_method=PUT" method="POST" style="margin:0;">
                     <input type="hidden" name="action" value="dec">
-                    <button class="btn" type="submit">-</button>
+                    <button class="btn-qty" type="submit">-</button>
                   </form>
                   <span class="qty"><%= item.qty %></span>
-<form action="/cart/<%= item.productId %>?_method=PUT" method="POST">
-  <input type="hidden" name="action" value="inc">
-  <button type="submit">+</button>
-</form>
+                  <form action="/cart/<%= item.productId %>?_method=PUT" method="POST" style="margin:0;">
+                    <input type="hidden" name="action" value="inc">
+                    <button class="btn-qty" type="submit">+</button>
+                  </form>
                 </div>
               </div>
-        <% items.forEach(item => { %>
-  <div class="item">
-    <form action="/cart/<%= item.productId %>?_method=DELETE" method="POST">
-      <button type="submit">✕</button>
-    </form>
-  </div>
-<% }) %>
+
+              <form action="/cart/<%= item.productId %>?_method=DELETE" method="POST">
+                <button class="delete-btn" type="submit">✕</button>
+              </form>
             </div>
           <% }) %>
         </div>
@@ -105,26 +150,21 @@
             <span>Delivery costs</span>
             <span>BHD <%= delivery.toFixed(2) %></span>
           </div>
-
           <div class="row total">
             <span>Total</span>
             <span>BHD <%= total.toFixed(2) %></span>
           </div>
-
           <form action="/cart/checkout" method="POST">
-            <button class="checkout" type="submit">checkout</button>
+            <button class="checkout-btn" type="submit">checkout</button>
           </form>
-
           <% if (!user) { %>
-            <p style="margin-top:10px; font-size:13px; color:#555;">
+            <p style="margin-top:15px; font-size:13px; color:#666; text-align: center;">
               * You must sign in to checkout.
             </p>
           <% } %>
         </div>
-
       </div>
     <% } %>
-
   </div>
 </body>
 </html>
