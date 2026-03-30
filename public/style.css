@@ -38,7 +38,9 @@ body {
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   padding: 15px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .offer-banner:hover {
@@ -109,9 +111,9 @@ body {
 }
 
 .category-card:hover {
-transform: translateY(-8px) scale(1.05);
-background-color: #0e2962;
-color: white;
+  transform: translateY(-8px) scale(1.05);
+  background-color: #0e2962;
+  color: white;
 }
 
 /*product*/
@@ -134,7 +136,6 @@ color: white;
   padding-left: 70px;
 }
 
-
 .product-card {
   text-decoration: none;
   display: flex;
@@ -145,14 +146,13 @@ color: white;
   overflow: hidden;
   transition: all 0.3s ease;
   text-align: center;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
 }
 
 .product-card:hover {
   transform: translateY(-10px);
   cursor: pointer;
 }
-
 
 .product-image-wrapper {
   padding: 20px;
@@ -172,7 +172,6 @@ color: white;
 .product-info {
   padding: 20px;
 }
-
 
 .product-name {
   font-size: 1.1rem;
@@ -195,112 +194,113 @@ color: white;
   font-size: 1.2rem;
   color: #777;
 }
-.add-cart-btn{
-background:#0e2962;
-color:white;
-border:none;
-padding:8px 15px;
-border-radius:6px;
-cursor:pointer;
-font-size:13px;
-margin-top:-10px;
+.add-cart-btn {
+  background: #0e2962;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  margin-top: -10px;
 }
 
-.add-cart-btn:hover{
-opacity:0.9;
+.add-cart-btn:hover {
+  opacity: 0.9;
 }
 
 /*details*/
 
-.product-details-container{
-display:flex;
-justify-content:center;
-padding:40px 20px;
+.product-details-container {
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
 }
 
-.product-details-card{
-display:flex;
-gap:40px;
-max-width:800px;
-align-items:flex-start;
+.product-details-card {
+  display: flex;
+  gap: 40px;
+  max-width: 800px;
+  align-items: flex-start;
 }
 
-.product-details-image{
-width:200px;
-display:flex;
-justify-content:center;
+.product-details-image {
+  width: 200px;
+  display: flex;
+  justify-content: center;
 }
 
-.product-details-image img{
-width:170px;
-height:auto;
-object-fit:contain;
+.product-details-image img {
+  width: 170px;
+  height: auto;
+  object-fit: contain;
 }
 
-.product-details-info{
-flex:1;
+.product-details-info {
+  flex: 1;
 }
 
-.product-title{
-font-size:20px;
-margin-bottom:10px;
-color:#0e2962;
+.product-title {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #0e2962;
 }
 
-.product-description{
-font-size:14px;
-color:#555;
-line-height:1.6;
-margin-bottom:15px;
+.product-description {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 15px;
 }
 
-.product-price{
-font-size:18px;
-font-weight:600;
-color:#0e2962;
-margin-bottom:20px;
+.product-price {
+  font-size: 18px;
+  font-weight: 600;
+  color: #0e2962;
+  margin-bottom: 20px;
 }
 
-.product-actions{
-display:flex;
-align-items:center;
-gap:15px;
+.product-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
 
-.qty-box{
-display:flex;
-border:1px solid #ddd;
-border-radius:6px;
-overflow:hidden;
+.qty-box {
+  display: flex;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  overflow: hidden;
 }
 
-.qty-box button{
-width:30px;
-height:30px;
-border:none;
-background:#f5f5f5;
-cursor:pointer;
-font-size:16px;
+.qty-box button {
+  width: 30px;
+  height: 30px;
+  border: none;
+  background: #f5f5f5;
+  cursor: pointer;
+  font-size: 16px;
 }
 
-.qty-box input{
-width:40px;
-border:none;
-text-align:center;
+.qty-box input {
+  width: 40px;
+  border: none;
+  text-align: center;
 }
 
-.add-cart-btn{
-background:#0e2962;
-color:white;
-border:none;
-padding:8px 20px;
-border-radius:6px;
-cursor:pointer;
-font-size:14px;
+.add-cart-btn {
+  background: #0e2962;
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
 }
 
-.add-cart-btn:hover{
-opacity:0.9;}
+.add-cart-btn:hover {
+  opacity: 0.9;
+}
 
 .category {
   display: inline-block;
@@ -378,4 +378,3 @@ a {
 a:hover {
   text-decoration: underline;
 }
-
