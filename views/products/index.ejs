@@ -10,6 +10,8 @@
 
 <body>
 <%- include("../partials/header") %>
+
+
 <div class="products-page-container">
 <% if (products.length === 0) { %>
 <p class="no-products">No products found.</p>
@@ -44,5 +46,6 @@ Add Cart
 <% } %>
 </div>
 
+<%- include("../partials/footer.ejs") %>
 </body>
 </html>
