@@ -1,33 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Products</title>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Products</title>
 </head>
+
 <body>
 <%- include("../partials/header") %>
-
 <div class="products-page-container">
-  <% if (products.length === 0) { %>
-    <p class="no-products">No products found.</p>
-  <% } else { %>
-    <div class="products-grid">
-      <% products.forEach(product => { %>
-        <a href="/products/<%= product._id %>" class="product-card">
-          <div class="product-image-wrapper">
-            <img src="<%= product.imageUrl %>" alt="<%= product.name %>" />
-          </div>
-          <div class="product-info">
-            <h3 class="product-name text-decoration-none"><%= product.name %></h3>
-            <p class="product-price"><%= product.price %> BHD</p>
-            </div>
-        </a>
-      <% }) %>
-    </div>
-  <% } %>
+<% if (products.length === 0) { %>
+<p class="no-products">No products found.</p>
+<% } else { %>
+<div class="products-grid">
+<% products.forEach(product => { %>
+<div class="product-card">
+<a href="/products/<%= product._id %>">
+<div class="product-image-wrapper">
+<img src="<%= product.imageUrl %>" alt="<%= product.name %>">
 </div>
+</a>
+
+<div class="product-info">
+<a href="/products/<%= product._id %>" class="product-name">
+<%= product.name %>
+</a>
+<p class="product-price">
+<%= product.price %> BHD
+</p>
+
+<form action="/cart/add" method="POST">
+<input type="hidden" name="productId" value="<%= product._id %>">
+<button class="add-cart-btn">
+Add Cart
+</button>
+</form>
+</div>
+</div>
+<% }) %>
+</div>
+<% } %>
+</div>
+
 </body>
 </html>
