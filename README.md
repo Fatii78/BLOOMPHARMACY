@@ -34,7 +34,7 @@
 
 ##### 1. User creates an account or signs in.
 ##### 2. Browse products from categories.
-##### 3. Add items to cart or favorites.
+##### 3. Add items to cart.
 ##### 4. Submit reviews for purchased products.
 ##### 5. Place an order.
 ##### 6. View order history in “My Orders”.
@@ -45,13 +45,12 @@
 ***
 
 ## ***Screenshots***
-![ERD](./ER.jpeg)
-![HOME](./screenshots/home.png)
-![PRODUCTS](./screenshots/products.png)
-![PRODUCT DETAILS](./screenshots/product-details.png)
-![CART](./screenshots/cart.png)
-![FAVORITES](./screenshots/favorites.png)
-![MY ORDERS](./screenshots/orders.png)
+![ERD](./public/images/ER.PNG)
+![HOME](./public/images/home.png)
+![PRODUCTS](./public/images/products.png)
+![PRODUCT DETAILS](./public/images/product-details.png)
+![CART](./public/images/cart.png)
+![MY ORDERS](./public/images/success_order.png)
 
 ***
 
@@ -67,7 +66,11 @@
 ## ***Team Contributions***
 
 ###  Fatema Alnajjas
-- task 1
+- DATABASE
+- HOME PAGE
+- PRODUCTS PAGE
+- CART PAGE
+- SUCCESS ORDER PAGE
 
 ###  YASMIN EBRAHIM
 - task 1

@@ -3,89 +3,57 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
 <link rel="stylesheet" href="/style.css">
-
 <title><%= product.name %></title>
-
 </head>
 
 <body>
-
 <%- include("../partials/header") %>
-
 <div class="product-details-container">
-
 <div class="product-details-card">
-
 <div class="product-details-image">
 <img src="<%= product.imageUrl %>" alt="<%= product.name %>">
 </div>
-
 <div class="product-details-info">
-
 <h1 class="product-title">
 <%= product.name %>
 </h1>
-
 <p class="product-description">
 <%= product.description %>
 </p>
-
 <div class="product-price">
 BHD <%= product.price %>
 </div>
-
 <form action="/cart/add" method="POST">
-
 <input type="hidden" name="productId" value="<%= product._id %>">
-
 <div class="product-actions">
-
 <div class="qty-box">
-
 <button type="button" onclick="decQty()">-</button>
-
 <input id="qty" type="text" name="qty" value="1" readonly>
-
 <button type="button" onclick="incQty()">+</button>
-
 </div>
-
 <button class="add-cart-btn" type="submit">
 Add Cart
 </button>
-
 </div>
-
 </form>
-
 </div>
-
 </div>
-
 </div>
-
 
 <script>
-
 function incQty(){
 const qtyInput = document.getElementById("qty")
 qtyInput.value = Number(qtyInput.value) + 1
 }
-
 function decQty(){
 const qtyInput = document.getElementById("qty")
 const currentValue = Number(qtyInput.value)
-
 if(currentValue > 1){
 qtyInput.value = currentValue - 1
 }
-
 }
-
 </script>
 
 </body>
