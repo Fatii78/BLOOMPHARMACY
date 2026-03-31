@@ -57,7 +57,7 @@
 #### WireFrames
 ![WIREFRAMES](./public/images/wireFrames.jpeg)
 #### ERD
-![ERD](./public/images/ER.PNG)
+![ERD](./public/images/ER.png)
 ***
 
 ## ***Future Updates***
