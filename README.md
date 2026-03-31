@@ -6,7 +6,7 @@
 
 #### Links:
 [GitHub - Fatema](https://github.com/Fatii78) | [LinkedIn - Fatema](https://www.linkedin.com/in/fatema-alnajjas-a57198228)
-[GitHub - YASMIN](PUT_TEAMMATE_GITHUB_LINK_HERE) | [LinkedIn - YASMIN] ()
+[GitHub - YASMIN](PUT_TEAMMATE_GITHUB_LINK_HERE) | [LinkedIn - YASMIN] (www.linkedin.com/in/yasmeenebrahim1999)
 ***
 
 ## ***Description***
