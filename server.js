@@ -71,7 +71,7 @@ app.use("/", indexRouter)
 app.use("/auth", authRouter)
 app.use("/products", productRouter)
 app.use("/cart", cartRouter)
-app.use("/", reviewRouter)
+app.use("/reviews", reviewRouter)
 
 const PORT = 3000
 app.listen(PORT, () => {

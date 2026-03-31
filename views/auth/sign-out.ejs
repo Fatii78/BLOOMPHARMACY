@@ -9,7 +9,7 @@
   <body>
     <h1>Sign Out</h1>
     <% if (user) { %>
-      <form action="/auth/sign-out" method="POST" style="display:inline;">
+      <form action="/auth/sign-out" method="get" style="display:inline;">
         <button type="submit">Sign Out</button>
       </form>
       <% } else { %>
