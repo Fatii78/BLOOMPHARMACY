@@ -1,46 +1,3 @@
-<head>
-<style>
-/* Center container */
-.star-container {
-  display: flex;
-  justify-content: center;
-  align-items: center; /* vertical center if needed */
-  margin: 20px 0;
-}
-
-/* Star rating container */
-.star-rating {
-  direction: rtl; /* for right-to-left to make CSS easier */
-  display: flex;
-  font-size: 2.5rem;
-}
-
-/* Hide radio buttons */
-.star-rating input {
-  display: none;
-}
-
-/* Stars default (empty) */
-.star-rating label {
-  color: #ccc; /* empty star color */
-  cursor: pointer;
-  transition: color 0.2s;
-}
-
-/* Hover effect */
-.star-rating label:hover,
-.star-rating label:hover ~ label {
-  color: gold;
-}
-
-/* Checked stars */
-.star-rating input:checked ~ label,
-.star-rating input:checked + label,
-.star-rating label.selected {
-  color: gold;
-}
-</style>
-</head>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -86,36 +43,6 @@ Add Cart
 </form>
 </div>
 
-    <div class="review-form">
-        <h3>Submit a Review</h3>
-        <form id="reviewForm" action="/products/<%= product._id %>/review" method="POST">
-
-        <div class="star-rating">
-          <label for="star5">☆</label><label for="star5">☆</label><label for="star5">☆</label><label for="star5">☆</label><label for="star5">☆</label>
-        </div>
-
-        <label for="comment">Comment:</label>
-        <textarea name="comment" id="comment" rows="4" required></textarea>
-        <button type="submit">Submit Review</button>
-        </form>
-    </div>
-<script>
-  const stars = document.querySelectorAll('.star-rating input');
-
-  stars.forEach(star => {
-    star.addEventListener('click', function () {
-      if (this.wasChecked) {
-        this.checked = false;
-        this.wasChecked = false;
-      } else {
-        stars.forEach(s => s.wasChecked = false);
-        this.wasChecked = true;
-      }
-    });
-  });
-</script>
-</div>
-</div>
 </div>
 <% }) %>
 </div>

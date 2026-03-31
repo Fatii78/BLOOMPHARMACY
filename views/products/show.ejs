@@ -56,7 +56,40 @@ qtyInput.value = currentValue - 1
 }
 }
 </script>
+<div class="reviews-section">
 
+<h2>Reviews</h2>
+<% if(user){ %>
+<form action="/reviews/<%= product._id %>" method="POST">
+
+<label>Rating</label>
+<select name="rating" required>
+<option value="5">5 ⭐</option>
+<option value="4">4 ⭐</option>
+<option value="3">3 ⭐</option>
+<option value="2">2 ⭐</option>
+<option value="1">1 ⭐</option>
+</select>
+
+<textarea name="comment" placeholder="Write your comment" required></textarea>
+<button type="submit">Submit</button>
+</form>
+<% } else { %>
+<p>Please <a href="/auth/sign-in">sign in</a></p>
+<% } %>
+</div>
+<div class="reviews-list">
+<% if(reviews.length === 0){ %>
+<p>No reviews.</p>
+<% } %>
+<% reviews.forEach(review => { %>
+<div class="review-card">
+<h4><%= review.userId.username %></h4>
+<p>Rating: <%= review.rating %> ⭐</p>
+<p><%= review.comment %></p>
+</div>
+<% }) %>
+</div>
 
 <%- include("../partials/footer.ejs") %>
 </body>

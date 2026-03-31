@@ -11,6 +11,6 @@ router.get("/sign-in", authController.showSignInPage)
 router.post("/sign-in", authController.signInUser)
 
 // SIGN OUT
-router.post("/sign-out", authController.signOutUser)
+router.get("/sign-out", authController.signOutUser)
 
 module.exports = router
