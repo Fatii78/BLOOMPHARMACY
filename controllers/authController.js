@@ -38,6 +38,7 @@ const registerAUser = async (req, res) => {
 
     req.session.user = {
       username: newUser.username,
+      _id: newUser._id,
     }
 
     req.session.save(() => {
@@ -83,6 +84,7 @@ const signInUser = async (req, res) => {
 
     req.session.user = {
       username: userInDatabase.username,
+      _id: userInDatabase._id,
     }
 
     req.session.save(() => {

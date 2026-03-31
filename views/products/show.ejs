@@ -56,39 +56,45 @@ qtyInput.value = currentValue - 1
 }
 }
 </script>
-<div class="reviews-section">
 
-<h2>Reviews</h2>
-<% if(user){ %>
-<form action="/reviews/<%= product._id %>" method="POST">
+<div class="reviews-wrapper">
+    <div class="reviews-content">
+        <h2>Reviews</h2>
 
-<label>Rating</label>
-<select name="rating" required>
-<option value="5">5 ⭐</option>
-<option value="4">4 ⭐</option>
-<option value="3">3 ⭐</option>
-<option value="2">2 ⭐</option>
-<option value="1">1 ⭐</option>
-</select>
+        <% if(user){ %>
+            <form class="review-form" action="/reviews/<%= product._id %>" method="POST">
+                <div class="form-group">
+                    <label>Rating</label>
+                    <select name="rating" required>
+                        <option value="5">5 ⭐</option>
+                        <option value="4">4 ⭐</option>
+                        <option value="3">3 ⭐</option>
+                        <option value="2">2 ⭐</option>
+                        <option value="1">1 ⭐</option>
+                    </select>
+                </div>
+                <textarea name="comment" placeholder="Write your comment" required></textarea>
+                <button class="submit-review-btn" type="submit">Submit Review</button>
+            </form>
+        <% } else { %>
+            <p class="signin-msg">Please <a href="/auth/sign-in">sign in</a> to write a review.</p>
+        <% } %>
 
-<textarea name="comment" placeholder="Write your comment" required></textarea>
-<button type="submit">Submit</button>
-</form>
-<% } else { %>
-<p>Please <a href="/auth/sign-in">sign in</a></p>
-<% } %>
-</div>
-<div class="reviews-list">
-<% if(reviews.length === 0){ %>
-<p>No reviews.</p>
-<% } %>
-<% reviews.forEach(review => { %>
-<div class="review-card">
-<h4><%= review.userId.username %></h4>
-<p>Rating: <%= review.rating %> ⭐</p>
-<p><%= review.comment %></p>
-</div>
-<% }) %>
+        <div class="reviews-list">
+            <% if(reviews.length === 0){ %>
+                <p class="no-reviews">No reviews!</p>
+            <% } %>
+            <% reviews.forEach(review => { %>
+                <div class="review-card">
+                    <div class="review-rating">
+                        <% for(let i=0; i < review.rating; i++) { %> ⭐ <% } %>
+                    </div>
+                    <p class="review-comment"><%= review.comment %></p>
+                    <small class="review-date"><%= new Date(review.createdAt).toLocaleDateString() %></small>
+                </div>
+            <% }) %>
+        </div>
+    </div>
 </div>
 
 <%- include("../partials/footer.ejs") %>
