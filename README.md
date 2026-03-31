@@ -11,7 +11,7 @@
 
 ## ***Description***
 
-#### Bloom Pharmacy is a full-stack web application that allows users to browse pharmacy products, explore categories, manage their cart, add products to favorites, write reviews, and track their orders.
+#### Bloom Pharmacy is a full-stack web application that allows users to browse pharmacy products, explore categories, manage their cart, add reviews.
 
 #### The platform provides a smooth and user-friendly shopping experience while maintaining a structured backend for product and order management.
 
@@ -37,7 +37,6 @@
 ##### 3. Add items to cart.
 ##### 4. Submit reviews for purchased products.
 ##### 5. Place an order.
-##### 6. View order history in “My Orders”.
 
 ##### The project was deployed and can be viewed here:
 [Live Demo](PUT_DEPLOYED_LINK_HERE)
@@ -60,6 +59,7 @@
 - [ ] Admin dashboard
 - [ ] Advanced filtering & search
 - [ ] UI improvements and animations
+- [ ] View order history in “My Orders”.
 
 ***
 
