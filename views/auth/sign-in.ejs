@@ -1,12 +1,64 @@
+<style>
+  body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background-color: #f5f6fa;
+  }
+
+  .auth-container {
+    width: 350px;
+    margin: 100px auto;
+    background: white;
+    padding: 35px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    text-align: center;
+  }
+
+  .auth-container h1 {
+    color: #0b2a5b;
+    margin-bottom: 25px;
+  }
+
+  .auth-container input {
+    width: 100%;
+    padding: 12px;
+    margin: 12px 0;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+  }
+
+  .auth-container button {
+    width: 100%;
+    padding: 12px;
+    background-color: #0b2a5b;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  .auth-container button:hover {
+    background-color: #163d7a;
+  }
+
+  a {
+    display: block;
+    margin-top: 15px;
+    text-align: center;
+    color: #0b2a5b;
+    text-decoration: none;
+  }
+</style>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/style.css" />
     <title>Sign In</title>
   </head>
   <body>
+    <%- include("../partials/header.ejs") %>
     <div class="auth-container">
       <h1>Sign In</h1>
       <form action="/auth/sign-in" method="POST">
@@ -16,5 +68,6 @@
       </form>
     </div>
     <a href="/">Back to Home</a>
+    <%- include("../partials/footer.ejs") %>
   </body>
 </html>
