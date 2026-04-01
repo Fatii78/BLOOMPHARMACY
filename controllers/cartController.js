@@ -1,4 +1,5 @@
 const Product = require("../models/Product")
+const Order = require("../models/order")
 
 const ensureCart = (req) => {
   if (!req.session.cart) req.session.cart = {}
@@ -88,7 +89,7 @@ const requireAuth = (req, res, next) => {
   next()
 }
 
-const checkout = (req, res) => {
+const checkout = async (req, res) => {
   try {
     ensureCart(req)
     if (req.session.cart.items.length === 0) return res.redirect("/cart")
@@ -101,8 +102,25 @@ const checkout = (req, res) => {
     const discountRate = isFirstOrder ? 0.10 : 0
     const discountAmount = subtotal * discountRate
     const total = (subtotal - discountAmount) + delivery
+
+    const order = await Order.create({
+      userId: req.session.user._id,
+      items: req.session.cart.items.map(i => ({
+        productId: i.productId,
+        name: i.name,
+        price: i.price,
+        quantity: i.qty,
+        imageUrl: i.imageUrl || ""
+      })),
+      subtotal,
+      delivery,
+      total,
+      status: "completed"
+    })
+
     req.session.hasOrderedBefore = true
     req.session.cart.items = []
+
     req.session.save(() => {
       res.render("cart/success", {
         subtotal,
@@ -122,5 +140,5 @@ module.exports = { showCart,
     updateQty,
     deleteItem,
     checkout,
-    requireAuth
+    requireAuth,
   }
