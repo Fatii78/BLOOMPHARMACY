@@ -1,3 +1,9 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>header</title>
 <style>
   .header-wrap{
     max-width: 980px;
@@ -147,6 +153,9 @@
   object-fit:contain;
 }
 </style>
+</head>
+
+<body>
 
 <div class="header-wrap">
 
@@ -186,6 +195,7 @@
             <a href="/auth/sign-in">Sign In</a>
             <a href="/auth/sign-up">Sign Up</a>
           <% } else { %>
+            <a href="/auth/profile">Profile</a>
             <a href="/auth/sign-out">Sign Out</a>
           <% } %>
         </div>
@@ -194,7 +204,7 @@
   </div>
 
   <form class="searchbar" action="/products" method="GET">
-    <input type="text" name="q" placeholder="Search products..." />
+    <input type="text" name="p" placeholder="Search products..." />
     <button type="submit">🔍︎</button>
   </form>
 
@@ -215,3 +225,11 @@
     if (profileMenu && !e.target.closest(".dropdown")) profileMenu.classList.remove("show")
   })
 </script>
+
+</body>
+</html>
+
+
+
+
+

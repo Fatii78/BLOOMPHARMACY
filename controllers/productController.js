@@ -1,17 +1,17 @@
 const Product = require("../models/Product")
 const Review = require("../models/Review")
 
-// GET ALL PRODUCTS
+// GET ALL PRODUCTS + SEARCH
 const getAllProducts = async (req, res) => {
   try {
-    const { category, q } = req.query
+    const { category, p } = req.query
     const filter = {}
     if (category) filter.category = category
-    if (q && q.trim() !== "") {
-      filter.name = { $regex: q.trim(), $options: "i" }
+    if (p && p.trim() !== "") {
+      filter.name = { $regex: p.trim(), $options: "i" }
     }
     const products = await Product.find(filter)
-    res.render("products/index", { products, category, q })
+    res.render("products/index", { products, category, p })
   } catch (error) {
     res
       .status(500)

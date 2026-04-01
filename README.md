@@ -54,6 +54,7 @@
 ![SIGN-IN](./public/images/sign-in.png)
 ![SIGN-up](./public/images/sign-up.png)
 ![MY ORDERS](./public/images/success_order.png)
+![PROFILE](./public/images/profile.png)
 #### WireFrames
 ![WIREFRAMES](./public/images/wireFrames.jpeg)
 #### ERD
@@ -66,7 +67,7 @@
 - [ ] Admin dashboard
 - [ ] Add favorites
 - [ ] UI improvements and animations
-- [ ] View order history in “My Orders”.
+- [X] View order history in “My Orders”.
 
 ***
 
@@ -78,6 +79,7 @@
 - PRODUCTS PAGE
 - CART PAGE
 - SUCCESS ORDER PAGE
+- PROFILE
 
 ###  YASMIN EBRAHIM
 - MODELS
