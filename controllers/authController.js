@@ -1,6 +1,7 @@
 const bcrypt = require("bcrypt")
 
 const User = require("../models/User.js")
+const Order = require("../models/order.js")
 
 // SHOW SIGN UP PAGE
 const showSignUpPage = async (req, res) => {
@@ -111,10 +112,29 @@ const signOutUser = async (req, res) => {
   }
 }
 
+const getProfile = async (req, res) => {
+  try {
+    if (!req.session.user) {
+      return res.redirect("/sign-in")
+    }
+    const user = req.session.user
+    const orders = await Order.find({ userId: user._id }).sort({ createdAt: -1 })
+    res.render("auth/profile", {
+      user,
+      orders
+    })
+  } catch (error) {
+    console.log(error)
+    res.status(500).send("Server Error")
+  }
+}
+
+
 module.exports = {
   showSignUpPage,
   registerAUser,
   showSignInPage,
   signInUser,
   signOutUser,
+  getProfile,
 }

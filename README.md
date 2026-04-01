@@ -6,14 +6,15 @@
 
 #### Links:
 [GitHub - Fatema](https://github.com/Fatii78) | [LinkedIn - Fatema](https://www.linkedin.com/in/fatema-alnajjas-a57198228)
-[GitHub - YASMIN](PUT_TEAMMATE_GITHUB_LINK_HERE) | [LinkedIn - YASMIN] (www.linkedin.com/in/yasmeenebrahim1999)
+
+[GitHub - Yasmin](PUT_TEAMMATE_GITHUB_LINK_HERE) | [LinkedIn - Yasmin](https://www.linkedin.com/in/yasmeenebrahim1999)
 ***
 
 ## ***Description***
 
-#### Bloom Pharmacy is a full-stack web application that allows users to browse pharmacy products, explore categories, manage their cart, add products to favorites, write reviews, and track their orders.
+#### Bloom Pharmacy is a full-stack web application designed to make online pharmacy shopping easy and convenient. Users can browse a variety of pharmacy products, explore categories, add items to their cart, and leave reviews for purchased products.
 
-#### The platform provides a smooth and user-friendly shopping experience while maintaining a structured backend for product and order management.
+#### The platform ensures a smooth and user-friendly shopping experience while maintaining a reliable backend for product and order management, helping users save time and make informed decisions.
 
 ***
 
@@ -35,9 +36,8 @@
 ##### 1. User creates an account or signs in.
 ##### 2. Browse products from categories.
 ##### 3. Add items to cart.
-##### 4. Submit reviews for purchased products.
+##### 4. Submit reviews for products.
 ##### 5. Place an order.
-##### 6. View order history in “My Orders”.
 
 ##### The project was deployed and can be viewed here:
 [Live Demo](PUT_DEPLOYED_LINK_HERE)
@@ -45,21 +45,29 @@
 ***
 
 ## ***Screenshots***
-![ERD](./public/images/ER.PNG)
+
 ![HOME](./public/images/home.png)
 ![PRODUCTS](./public/images/products.png)
 ![PRODUCT DETAILS](./public/images/product-details.png)
+![PRODUCT DETAILS](./public/images/product-details2.png)
 ![CART](./public/images/cart.png)
+![SIGN-IN](./public/images/sign-in.png)
+![SIGN-up](./public/images/sign-up.png)
 ![MY ORDERS](./public/images/success_order.png)
-
+![PROFILE](./public/images/profile.png)
+#### WireFrames
+![WIREFRAMES](./public/images/wireFrames.jpeg)
+#### ERD
+![ERD](./public/images/ER.png)
 ***
 
 ## ***Future Updates***
 
 - [ ] Online payment integration
 - [ ] Admin dashboard
-- [ ] Advanced filtering & search
+- [ ] Add favorites
 - [ ] UI improvements and animations
+- [X] View order history in “My Orders”.
 
 ***
 
@@ -71,13 +79,12 @@
 - PRODUCTS PAGE
 - CART PAGE
 - SUCCESS ORDER PAGE
+- PROFILE
 
 ###  YASMIN EBRAHIM
-- DATABASE
-- HOME PAGE
-- SHOW PAGE (REVIEW COMMENTS)
+- MODELS
+- REVIEW COMMENTS
 - AUTH PAGE (SIGN-IN, SIGN-UP, SIGN-OUT)
-- CSS - CONTROLLER - ROUTER PAGE
 
 ***
 
