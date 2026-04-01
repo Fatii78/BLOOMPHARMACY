@@ -1,4 +1,4 @@
-const Product = require("../models/Product")
+const Product = require("../models/product")
 const Order = require("../models/order")
 
 const ensureCart = (req) => {
@@ -18,7 +18,9 @@ const addToCart = async (req, res) => {
     const { productId, qty } = req.body
     const quantity = Number(qty) || 1
     if (!productId) {
-      return res.status(400).json({ message: "Missing productId in request body" })
+      return res
+        .status(400)
+        .json({ message: "Missing productId in request body" })
     }
     const product = await Product.findById(productId)
     if (!product) return res.status(404).send("Product not found")
@@ -40,17 +42,18 @@ const addToCart = async (req, res) => {
       return res.redirect("/cart")
     })
   } catch (error) {
-    return res.status(500).json({ message: "Error adding to cart",error: error.message, })
+    return res
+      .status(500)
+      .json({ message: "Error adding to cart", error: error.message })
   }
 }
-
 
 const updateQty = (req, res) => {
   try {
     ensureCart(req)
     console.log("UPDATE QTY BODY:", req.body)
     const { productId } = req.params
-const { action } = req.body
+    const { action } = req.body
     const item = req.session.cart.items.find((i) => i.productId === productId)
     if (!item) {
       return res.redirect("/cart")
@@ -66,10 +69,11 @@ const { action } = req.body
       return res.redirect("/cart")
     })
   } catch (error) {
-    return res.status(500).json({ message: "Error updating cart",error: error.message })
- }
+    return res
+      .status(500)
+      .json({ message: "Error updating cart", error: error.message })
+  }
 }
-
 
 const deleteItem = (req, res) => {
   try {
@@ -80,7 +84,9 @@ const deleteItem = (req, res) => {
     )
     req.session.save(() => res.redirect("/cart"))
   } catch (error) {
-    return res.status(500).json({ message: "Error deleting item", error: error.message })
+    return res
+      .status(500)
+      .json({ message: "Error deleting item", error: error.message })
   }
 }
 
@@ -94,28 +100,28 @@ const checkout = async (req, res) => {
     ensureCart(req)
     if (req.session.cart.items.length === 0) return res.redirect("/cart")
     const subtotal = req.session.cart.items.reduce(
-      (sum, item) => sum + (item.price * item.qty),
+      (sum, item) => sum + item.price * item.qty,
       0
     )
     const delivery = 2
     const isFirstOrder = !req.session.hasOrderedBefore
-    const discountRate = isFirstOrder ? 0.10 : 0
+    const discountRate = isFirstOrder ? 0.1 : 0
     const discountAmount = subtotal * discountRate
-    const total = (subtotal - discountAmount) + delivery
+    const total = subtotal - discountAmount + delivery
 
     const order = await Order.create({
       userId: req.session.user._id,
-      items: req.session.cart.items.map(i => ({
+      items: req.session.cart.items.map((i) => ({
         productId: i.productId,
         name: i.name,
         price: i.price,
         quantity: i.qty,
-        imageUrl: i.imageUrl || ""
+        imageUrl: i.imageUrl || "",
       })),
       subtotal,
       delivery,
       total,
-      status: "completed"
+      status: "completed",
     })
 
     req.session.hasOrderedBefore = true
@@ -127,18 +133,21 @@ const checkout = async (req, res) => {
         delivery,
         discountAmount,
         total,
-        isFirstOrder
+        isFirstOrder,
       })
     })
   } catch (error) {
-    return res.status(500).json({ message: "Error checkout", error: error.message })
+    return res
+      .status(500)
+      .json({ message: "Error checkout", error: error.message })
   }
 }
 
-module.exports = { showCart,
-   addToCart,
-    updateQty,
-    deleteItem,
-    checkout,
-    requireAuth,
-  }
+module.exports = {
+  showCart,
+  addToCart,
+  updateQty,
+  deleteItem,
+  checkout,
+  requireAuth,
+}
