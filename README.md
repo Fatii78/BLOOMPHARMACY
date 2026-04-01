@@ -40,7 +40,7 @@
 ##### 5. Place an order.
 
 ##### The project was deployed and can be viewed here:
-[Live Demo](PUT_DEPLOYED_LINK_HERE)
+[Live Demo](https://bloompharmacy-4.onrender.com)
 
 ***
 
